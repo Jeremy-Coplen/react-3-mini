@@ -173,6 +173,9 @@ class App extends Component {
         buyersToDisplay: response.data
       })
     })
+    .catch(err => {
+      toast.error("Yikes something went wrong")
+    })
   }
 
   byYear() {
@@ -180,9 +183,13 @@ class App extends Component {
 
     axios.get(`https://joes-autos.herokuapp.com/api/vehicles?year=${year}`)
     .then(response => {
+      toast.success("Filtered by year")
       this.setState({
         vehiclesToDisplay: response.data
       })
+    })
+    .catch(err => {
+      toast.error("Yikes something went wrong")
     })
   }
 
